@@ -207,7 +207,7 @@
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline">Anak aheng</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
@@ -218,7 +218,7 @@
                     alt="User Image"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
+                    Anak Aheng - web depeloper
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -318,6 +318,13 @@
                 <a class='nav-link' href='{{ url('prodi') }}'>
                   <i class="nav-icon bi bi-palette"></i>
                   <p>prodi</p>
+                </a>
+              </li>
+              </li>
+                <li class="nav-item">
+                <a class='nav-link' href='{{ url('mahasiswa') }}'>
+                  <i class="nav-icon bi bi-palette"></i>
+                  <p>mahasiswa</p>
                 </a>
               </li>
               <li class="nav-item">
