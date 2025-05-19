@@ -30,7 +30,8 @@
           </div>
         </div>
         <div class="card-body">
-           <table>
+        <a href="{{ route('prodi.create')}}" class="btn btn-primary"> Tambah </a>
+           <table class = "table">
                 <tr>
                     <th>Nama</th>
                     <th>Singkatan</th>
