@@ -70,9 +70,9 @@
                         </div>
                          <div class="mb-3">
                         <label for="foto" class="form-label">Foto</label>
-                        <input type="text" class="form-control" name="foto" value="{{ old('foto') }}">
+                        <input type="file" class="form-control" name="foto">
                         @error('foto')
-                        <div class="text-danger">{{ $message }}</div>
+                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                     </div>

@@ -61,7 +61,9 @@ class FakultasController extends Controller
      */
     public function show(Fakultas $fakultas)
     {
-        //
+        $fakultas = Fakultas::findorFail($fakultas);
+        // dd($fakultas);
+        return view('fakultas.show', compact('fakultas'));  
     }
 
     /**
