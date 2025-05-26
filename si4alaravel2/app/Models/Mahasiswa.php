@@ -9,10 +9,14 @@ class Mahasiswa extends Model
 {
     protected $table = 'mahasiswa'; //nama tabel
     protected $fillable = [
-        'npm', 'nama', 'jk',
-        'tanggal_lahir', 'tempat_lahir',
+        'npm', 
+        'nama', 
+        'jk',
+        'tanggal_lahir', 
+        'tempat_lahir',
         'asal_sma', 
-        'prodi_id', 'foto'
+        'prodi_id', 
+        'foto'
     ];
     public function prodi()
     {
