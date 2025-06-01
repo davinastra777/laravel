@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class SesiController extends Controller
 {
     public function index() {
-        $sesis = Sesi::all();
-        return view('sesi.index', compact('sesis'));
+        $sesi = Sesi::all();
+        return view('sesi.index', compact('sesi'));
     }
 
     public function create() {

@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJadwalsTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
-        Schema::create('jadwals', function (Blueprint $table) {
+        Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
             $table->string('tahun_akademik'); 
             $table->string('kode_smt');       
@@ -22,7 +22,7 @@ class CreateJadwalsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('jadwals');
+        Schema::dropIfExists('jadwal');
     }
-}
+};
 

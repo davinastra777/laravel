@@ -9,6 +9,8 @@ class Jadwal extends Model
 {
     use HasFactory;
 
+    protected $table = 'jadwal'; 
+
     protected $fillable = [
         'tahun_akademik',
         'kode_smt',
@@ -18,18 +20,4 @@ class Jadwal extends Model
         'sesi_id',
     ];
 
-    public function sesi()
-    {
-        return $this->belongsTo(Sesi::class);
-    }
-
-    public function mataKuliah()
-    {
-        return $this->belongsTo(MataKuliah::class);
-    }
-
-    public function dosen()
-    {
-        return $this->belongsTo(User::class, 'dosen_id');
-    }
 }

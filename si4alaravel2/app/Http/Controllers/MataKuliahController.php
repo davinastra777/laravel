@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class MataKuliahController extends Controller
 {
     public function index() {
-        $mataKuliahs = MataKuliah::with('prodi')->get();
-        return view('mata_kuliah.index', compact('mataKuliahs'));
+        $mataKuliah = MataKuliah::with('prodi')->get();
+        return view('mata_kuliah.index', compact('mataKuliah'));
     }
 
     public function create() {

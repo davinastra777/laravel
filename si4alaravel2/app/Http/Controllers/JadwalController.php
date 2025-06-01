@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
+use App\Models\Matakuliah; 
+use App\Models\Dosen;
+use App\Models\Sesi;
 use Illuminate\Http\Request;
 
 class JadwalController extends Controller
@@ -26,9 +29,13 @@ class JadwalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('jadwal.create');
-    }
+{
+    $matakuliah = Matakuliah::all();
+    // $dosen = Dosen::all(); 
+    $sesi = Sesi::all(); 
+    return view('jadwal.create', compact('matakuliah', 'dosen', 'sesi'));
+}
+
 
     /**
      * Store a newly created resource in storage.
