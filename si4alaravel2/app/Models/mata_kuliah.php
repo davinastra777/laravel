@@ -5,7 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class mata_kuliah extends Model
+class MataKuliah extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['kode_mk', 'nama', 'prodi_id'];
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class);
+    }
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }
