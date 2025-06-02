@@ -2,49 +2,94 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MataKuliah;
-use App\Models\Prodi;
+use App\Models\mataKuliah;
 use Illuminate\Http\Request;
 
-class MataKuliahController extends Controller
+class mata_kuliahController extends Controller
 {
-    public function index() {
-        $mataKuliah = MataKuliah::with('prodi')->get();
-        return view('mata_kuliah.index', compact('mataKuliah'));
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //panggil model mata_kuliah dmenggunakan eloquent
+        $mata_kuliah = MataKuliah ::all(); // perintah sql select * from mata_kuliah
+        // dd($mata_kuliah); // dump and die\
+        return view('mata_kuliah.index', compact('mata_kuliah'));
     }
 
-    public function create() {
-        $prodis = Prodi::all();
-        return view('mata_kuliah.create', compact('prodis'));
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('mata_kuliah.create');
     }
 
-    public function store(Request $request) {
-        $request->validate([
-            'kode_mk' => 'required',
-            'nama' => 'required',
-            'prodi_id' => 'required'
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //validasi input
+        $input = $request->validate([
+            'nama' => 'required|unique:mata_kuliah',
+            'kode_mk' => 'required|unique:mata_kuliah'
         ]);
-        MataKuliah::create($request->all());
-        return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil ditambahkan');
+        // simpan data ke tabel mata_kuliah
+        MataKuliah::create($input);
+        // redirect ke route mata_kuliah.index
+        return redirect()->route('mata_kuliah.index')->with('success', 'Mata Kuliah berhasil ditambahkan.');
     }
 
-    public function edit(MataKuliah $mata_kuliah) {
-        $prodis = Prodi::all();
-        return view('mata_kuliah.edit', compact('mata_kuliah', 'prodis'));
+    /**
+     * Display the specified resource.
+     */
+    public function show($mata_kuliah)
+    {
+        $mata_kuliah = MataKuliah::findOrFail($mata_kuliah);
+        //dd($mata_kuliah);
+        return view('mata_kuliah.show', compact('mata_kuliah'));
     }
 
-    public function update(Request $request, MataKuliah $mata_kuliah) {
-        $request->validate([
-            'kode_mk' => 'required',
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($mata_kuliah)
+    {
+        $mata_kuliah = MataKuliah::findOrFail($mata_kuliah);
+        //dd($mata_kuliah);
+        return view('mata_kuliah.edit', compact('mata_kuliah'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $mata_kuliah)
+    {
+        $mata_kuliah = MataKuliah::findOrFail($mata_kuliah);
+        // validasi input
+        $input = $request->validate([
             'nama' => 'required',
-            'prodi_id' => 'required'
+            'kode_mk' => 'required|unique:mata_kuliah,kode_mk,'
         ]);
-        $mata_kuliah->update($request->all());
-        return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil diperbarui');
+        // update data mata_kuliah
+        $mata_kuliah->update($input);
+        // redirect ke route mata_kuliah.index
+        return redirect()->route('mata_kuliah.index')->with('success', 'mata_kuliah berhasil diperbarui.');
     }
 
-    public function destroy(MataKuliah $mata_kuliah) {
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($mata_kuliah)
+    {
+        $mata_kuliah = MataKuliah::findOrFail($mata_kuliah);
+        // dd($mata_kuliah);
+
+        // Hapus data mata_kuliah
         $mata_kuliah->delete();
-        return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil dihapus');
+        // Redirect ke route mata_kuliah.index
+        return redirect()->route('mata_kuliah.index')->with('success', 'Mata Kuliah berhasil dihapus.');
     }
 }

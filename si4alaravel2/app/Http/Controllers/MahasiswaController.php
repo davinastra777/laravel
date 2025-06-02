@@ -98,9 +98,27 @@ class MahasiswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
-    {
-        //
+    {   
+        $mahasiswa = mahasiswa::findOrFail($mahasiswa);
+        // validasi input
+        $input = $request->validate([
+            'nama' => 'required',
+            'NPM' => 'required',
+            'jk' => 'required',
+            'tanggal_lahir' => 'required',
+
+            'asal_sma' => 'required',
+            'prodi_id' => 'required|exists:prodi,id',
+            'fakultas_id' => 'required|exists:fakultas,id',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+
+        ]);
+        // update data ke tabel mahasiswa
+        $mahasiswa->update($input);
+        // redirect ke halaman mahasiswa.index
+        return redirect()->route('mahasiswa.index')->with('success', 'mahasiswa berhasil diupdate');
     }
+    
 
     /**
      * Remove the specified resource from storage.

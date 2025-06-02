@@ -12,4 +12,5 @@ class Sesi extends Model
         'nama'
     ];
 
+    public $timestamps = true;
 }

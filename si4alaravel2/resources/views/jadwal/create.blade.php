@@ -38,7 +38,7 @@
                       <div class="mb-3">
                         <label for="mata_kuliah_id" class="form-label">Mata Kuliah</label>
                         <select class="form-control" name="mata_kuliah_id">
-                          @foreach ($matakuliah as $item)
+                          @foreach ($mata_kuliah as $item)
                               <option value="{{ $item->id }}">{{ $item->nama }}</option>
                           @endforeach
                           </select>
@@ -47,7 +47,7 @@
                         @enderror
                         </div>
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                         <label for="dosen_id" class="form-label">Dosen</label>
                         <select class="form-control" name="dosen_id">
                           @foreach ($dosen as $item)
@@ -57,7 +57,7 @@
                         @error('dosen_id')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
-                        </div>
+                        </div> --}}
                      
                      <div class="mb-3">
                         <label for="sesi_id" class="form-label">Sesi</label>
