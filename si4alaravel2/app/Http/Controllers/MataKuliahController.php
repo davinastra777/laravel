@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\mataKuliah;
 use Illuminate\Http\Request;
 
-class mata_kuliahController extends Controller
+class MataKuliahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class mata_kuliahController extends Controller
     public function index()
     {
         //panggil model mata_kuliah dmenggunakan eloquent
-        $mata_kuliah = MataKuliah ::all(); // perintah sql select * from mata_kuliah
+        $MataKuliah = MataKuliah ::all(); // perintah sql select * from mata_kuliah
         // dd($mata_kuliah); // dump and die\
         return view('mata_kuliah.index', compact('mata_kuliah'));
     }
