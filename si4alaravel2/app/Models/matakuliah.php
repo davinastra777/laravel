@@ -13,7 +13,7 @@ class MataKuliah extends Model
     use HasFactory;
 
 
-    protected $table = 'mata_kuliah';
+    protected $table = 'MataKuliah';
 
 
     protected $fillable = [
